@@ -4,10 +4,7 @@ pipeline {
         pollSCM('H/5 * * * *')  // Vérifie le repo Git toutes les 5 min
     }
     stages {
-        stage('Cloner Repo') {
-            steps {
-                git 'https://github.com/Nasdas330/port-scanner.git'
-            }
+
         }
         stage('Installer Dépendances') {
             steps {
