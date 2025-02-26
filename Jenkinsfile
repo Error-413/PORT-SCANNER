@@ -4,11 +4,6 @@ pipeline {
         pollSCM('H/5 * * * *')  // Vérifie les mises à jour Git toutes les 5 minutes
     }
     stages {
-        stage('Cloner Repo') {
-            steps {
-                git 'https://github.com/Error-413/PORT-SCANNER.git'
-            }
-        }
         stage('Installer Dépendances') {
             steps {
                 sh 'pip install -r requirements.txt'
@@ -32,3 +27,4 @@ pipeline {
         }
     }
 }
+
