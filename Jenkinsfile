@@ -1,10 +1,13 @@
 pipeline {
     agent any
     triggers {
-        pollSCM('H/5 * * * *')  // Vérifie le repo Git toutes les 5 min
+        pollSCM('H/5 * * * *')  // Vérifie les mises à jour Git toutes les 5 minutes
     }
     stages {
-
+        stage('Cloner Repo') {
+            steps {
+                git 'https://github.com/Error-413/PORT-SCANNER.git'
+            }
         }
         stage('Installer Dépendances') {
             steps {
@@ -23,8 +26,8 @@ pipeline {
         }
         stage('Push Image Docker') {
             steps {
-                sh 'docker tag port-scanner nasdas330/port-scanner:latest'
-                sh 'docker push nasdas330/port-scanner:latest'
+                sh 'docker tag port-scanner error-413/port-scanner:latest'
+                sh 'docker push error-413/port-scanner:latest'
             }
         }
     }
